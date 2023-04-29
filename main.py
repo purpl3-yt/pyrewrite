@@ -5,13 +5,12 @@ from utils.config import *
 import pip
 import logging
 import sys
-import asyncio
 
 os.chdir(sys.path[0])
 
 requirements = [
     'install',
-    'pyrogram',
+    'pyrogram==2.0.104',
     '--upgrade'
 ]
 
@@ -19,13 +18,14 @@ requirements = [
 
 logging.basicConfig(level=logging.INFO, format='%(message)s')
 
-if not os.path.isfile('config.ini'): # Если нету конфига
-    with open('config.ini', 'w') as cfg:cfg.write('[main]') # Создать конфиг
+if not os.path.isfile('config.ini'): # if config doesn't exist
+    with open('config.ini', 'w') as cfg:cfg.write('[main]') # create config
     config = ConfigParser()
     config.read('config.ini')
     config.set('main', 'api_id', 'ENTER_YOUR_API_ID')
     config.set('main', 'api_hash', 'ENTER_YOUR_API_HASH')
     config.set('main', 'prefix', '.')
+    config.add_section('settings')
 
     with open('config.ini', 'w') as cfg:config.write(cfg)
 

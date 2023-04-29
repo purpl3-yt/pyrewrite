@@ -1,4 +1,4 @@
-from utils.config import get_setting
+from utils.config import set_setting, get_setting
 
 class Setting:
     def __init__(self, name, description_short, description_long) -> None:
@@ -26,7 +26,12 @@ class Settings:
     def __init__(self) -> None:
         pass
 
-    def add(self, name, description_short, description_long = None):
+    def add(self, name, description_short, description_long = None, default_value = '.'):
+        try:get_setting(name, 'settings')
+        except Exception as e:
+            if name != 'prefix':
+                set_setting(name, default_value,'settings')
+
         if description_long == None:
             description_long = description_short
 
@@ -57,6 +62,5 @@ class Settings:
         return set.get_value()
 
 settings = Settings()
-
 # Add settings
 settings.add('prefix', 'userbot prefix', 'Changes the userbot prefix')

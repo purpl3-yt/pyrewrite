@@ -2,7 +2,8 @@ from pyrogram import Client, filters
 from pyrogram.types import Message
 from utils.prefix import prefix
 from utils.help import help_menu
-from utils.config import get_setting, set_setting
+from utils.config import set_setting
+from plugins.restart import restart
 from utils.settings import settings
 from plugins.helpers import get_args
 
@@ -19,6 +20,7 @@ async def set(client: Client, message: Message):
     
     if args[0] == 'prefix':
         set_setting(args[0], args[1], 'main')
+        await restart(client, message)
     else:
         set_setting(args[0], args[1], 'settings')
     

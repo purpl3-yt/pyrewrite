@@ -9,13 +9,10 @@ import io
 @Client.on_message(filters.command('eval', prefixes=prefix.get()) & filters.me)
 async def eval_cmd(client: Client, message: Message):
     args = get_args(message)
-    output = io.StringIO()
     exc = ''
-    with contextlib.redirect_stdout(output):
-        try:eval(''.join(args))
-        except Exception as e:exc = e
 
-    output = output.getvalue()
+    try:output = eval(''.join(args))
+    except Exception as e:exc = e
 
     if exc != '':
         await message.edit(f'❌ <b>Error:</b> <code>{exc}' + '</code>')
