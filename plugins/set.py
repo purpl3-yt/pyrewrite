@@ -5,7 +5,7 @@ from utils.help import help_menu
 from utils.config import set_setting
 from plugins.restart import restart
 from utils.settings import settings
-from plugins.helpers import get_args
+from plugins.helpers import get_args, warn
 
 @Client.on_message(filters.command('set', prefixes=prefix.get()) & filters.me)
 async def set(client: Client, message: Message):
@@ -13,18 +13,18 @@ async def set(client: Client, message: Message):
 
 
     try:args[0] # set name
-    except:await message.edit('❌ <b>Enter setting!</b>');return
+    except:await warn(message, 'Enter setting!');return
 
     try:args[1] # set value
-    except:await message.edit('❌ <b>Enter setting value!</b>');return
+    except:await warn(message, 'Enter setting value!');return
     
     if args[0] == 'prefix':
         set_setting(args[0], args[1], 'main')
         await restart(client, message)
     else:
         set_setting(args[0], args[1], 'settings')
-    
-    await message.edit(f'✅ <b>Set setting:</b> <code>{args[0]}</code> <b>to</b> <code>{args[1]}</code>')
+
+    await warn(message, f'✅ <b>Set setting:</b> <code>{args[0]}</code> <b>to</b> <code>{args[1]}</code>', 'done', True)
 
 help_menu.add_command('set', 'Set Setting')
 
@@ -39,7 +39,7 @@ async def sets(client: Client, message: Message):
         cmd_found = settings.get_by_name(args[0])
 
         if cmd_found == None:
-            await message.edit('❌ <b>Setting not found!</b>')
+            await warn(message, 'Setting not found!')
 
         else:
             await message.edit(f'<code>{cmd_found}</code> - <b>{cmd_found.get_long_description()}</b>\n<b>Current value:</b> <code>{cmd_found.get_value()}</code>')

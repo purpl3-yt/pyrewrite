@@ -7,10 +7,11 @@ class Prefix:
 
 
 class Command:
-    def __init__(self, name, description_short, description_long) -> None:
+    def __init__(self, name, description_short, description_long, usage) -> None:
         self.name = name
         self.description_short = description_short
         self.description_long = description_long
+        self.usage = usage
 
     def get_name(self):
         return self.name
@@ -21,6 +22,9 @@ class Command:
     def get_short_description(self):
         return self.description_short
     
+    def get_usage(self):
+        return self.usage
+
     def __str__(self):
         return self.name
     
@@ -30,11 +34,11 @@ class Help_Menu:
     def __init__(self) -> None:
         pass
 
-    def add_command(self, name, description_short = 'simple command', description_long = None):
+    def add_command(self, name, description_short = 'simple command', description_long = None, usage = 'Not set'):
         if description_long == None:
             description_long = description_short
 
-        self.commands[name] = [name, Command(name, description_short, description_long)]
+        self.commands[name] = [name, Command(name, description_short, description_long, usage)]
 
     def get(self):
         help_text = '<b>PyRewrite modules</b>\n'

@@ -1,7 +1,6 @@
-from pyrogram import Client
+from utils.config import *
 from configparser import ConfigParser
 import os, sys
-from utils.config import *
 import pip
 import logging
 import sys
@@ -14,7 +13,7 @@ requirements = [
     '--upgrade'
 ]
 
-pip.main(requirements)
+#pip.main(requirements)
 
 logging.basicConfig(level=logging.INFO, format='%(message)s')
 
@@ -35,6 +34,8 @@ if not os.path.isfile('config.ini'): # if config doesn't exist
 if get_setting('api_id') == 'ENTER_YOUR_API_ID' or get_setting('api_hash') == 'ENTER_YOUR_API_HASH':
     print('Please enter your api_id and api_hash!')
     quit()
+
+from pyrogram import Client
 
 client = Client(
     'pyrewrite',

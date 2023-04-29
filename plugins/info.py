@@ -10,7 +10,6 @@ async def info(client: Client, message: Message):
     if os.name == 'posix':
         import distro
         system = distro.name(pretty=False)
-
     await message.edit(f'''
 <b>PyRewrite - Simple & Convenient</b>
 <b>🖌 Prefix:</b> <b>"</b><code>{prefix.get()}</code><b>"</b>

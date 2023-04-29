@@ -4,6 +4,35 @@ import random
 def get_args(msg: Message):
     return str(msg.text).split(' ')[1:]
 
+async def warn(msg: Message, text: str, type = 'error', raw = False):
+    """Warn/Info about command"""
+
+    if type == 'error':
+        if not raw:
+            await msg.edit(f'❌ <b>{text.capitalize()}</b>')
+        elif raw:
+            await msg.edit(f'❌ {text.capitalize()}')
+
+    elif type == 'info':
+        if not raw:
+            await msg.edit(f'ℹ <b>{text.capitalize()}</b>')
+        elif raw:
+            await msg.edit(f'ℹ {text.capitalize()}')
+
+    elif type == 'time':
+        if not raw:
+            await msg.edit(f'⏳ <b>{text.capitalize()}</b>')
+        elif raw:
+            await msg.edit(f'⏳ {text.capitalize()}')
+
+    elif type == 'done':
+        if not raw:
+            await msg.edit(f'✅ <b>{text.capitalize()}</b>')
+        elif raw:
+            await msg.edit(f'✅ {text.capitalize()}')
+        
+    return msg
+
 def text_animation(text):
     symbols = ['*', '@', '#', '$', '%', '^', '&', '&']
     temp = text
