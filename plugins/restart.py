@@ -12,3 +12,10 @@ async def restart(client: Client, message: Message):
     await os.execvp('python3', ['python3','main.py', f'{restart_msg.id},{restart_msg.chat.id}'])
 
 help_menu.add_command('restart', 'Restartes userbot')
+
+@Client.on_message(filters.command('update', prefixes=prefix.get()) & filters.me)
+async def update(client, message):
+    os.system('git fetch')
+    os.system('git merge')
+    
+    await restart(client,message)

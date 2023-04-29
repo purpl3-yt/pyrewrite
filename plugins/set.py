@@ -11,7 +11,6 @@ from plugins.helpers import get_args, warn
 async def set(client: Client, message: Message):
     args = get_args(message)
 
-
     try:args[0] # set name
     except:await warn(message, 'Enter setting!');return
 
@@ -24,7 +23,7 @@ async def set(client: Client, message: Message):
     else:
         set_setting(args[0], args[1], 'settings')
 
-    await warn(message, f'✅ <b>Set setting:</b> <code>{args[0]}</code> <b>to</b> <code>{args[1]}</code>', 'done', True)
+    await warn(message, f'<b>Set setting:</b> <code>{args[0]}</code> <b>to</b> <code>{args[1]}</code>', 'done', True)
 
 help_menu.add_command('set', 'Set Setting')
 
@@ -42,6 +41,6 @@ async def sets(client: Client, message: Message):
             await warn(message, 'Setting not found!')
 
         else:
-            await message.edit(f'<code>{cmd_found}</code> - <b>{cmd_found.get_long_description()}</b>\n<b>Current value:</b> <code>{cmd_found.get_value()}</code>')
+            await message.edit(f'<code>{cmd_found}</code> - <b>{cmd_found.get_long_description()}</b>\n<b>Current value:</b> <code>{cmd_found.get_value()}</code>\n<b>Default value: </b><code>{cmd_found.get_default_value()}</code>')
 
 help_menu.add_command('sets', 'Get settings', 'Get list of settings')

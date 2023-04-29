@@ -1,10 +1,12 @@
 from utils.config import set_setting, get_setting
+from utils.prefix import prefix
 
 class Setting:
-    def __init__(self, name, description_short, description_long) -> None:
+    def __init__(self, name, description_short, description_long, default_value) -> None:
         self.name = name
         self.description_short = description_short
         self.description_long = description_long
+        self.default_value = default_value
 
     def get_name(self):
         return self.name
@@ -20,6 +22,9 @@ class Setting:
     
     def get_value(self):
         return get_setting(self.name, 'settings')
+
+    def get_default_value(self):
+        return self.default_value
     
 class Settings:
     settings_dict = {}
@@ -35,7 +40,7 @@ class Settings:
         if description_long == None:
             description_long = description_short
 
-        self.settings_dict[name] = Setting(name, description_short, description_long)
+        self.settings_dict[name] = Setting(name, description_short, description_long, default_value)
 
     def get(self):
         settings_text = '<b>PyRewrite Settings</b>\n'
@@ -60,7 +65,8 @@ class Settings:
     def get_value(self, set_name, new_value):
         set = self.get_by_name(set_name)
         return set.get_value()
-
+    
 settings = Settings()
 # Add settings
 settings.add('prefix', 'userbot prefix', 'Changes the userbot prefix')
+settings.add('banner', f'{prefix.get()}info banner', f'changes {prefix.get()}info banner', 'https://envs.sh/hkH.mp4')

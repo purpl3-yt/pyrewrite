@@ -10,6 +10,8 @@ os.chdir(sys.path[0])
 requirements = [
     'install',
     'pyrogram==2.0.104',
+    'distro',
+    'wget',
     '--upgrade'
 ]
 
