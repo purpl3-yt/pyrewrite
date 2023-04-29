@@ -24,4 +24,4 @@ async def info(client: Client, message: Message):
 <b>🔧 Commands: {str(help_menu.get_lenght())}</b>
 ''')
 
-help_menu.add_command('info', 'Get info', 'Get info about userbot')
+help_menu.add_command('info', 'Get info', 'Get info about userbot', author='Purpl3')

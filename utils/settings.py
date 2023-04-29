@@ -69,4 +69,4 @@ class Settings:
 settings = Settings()
 # Add settings
 settings.add('prefix', 'userbot prefix', 'Changes the userbot prefix')
-settings.add('banner', f'{prefix.get()}info banner', f'changes {prefix.get()}info banner', 'https://envs.sh/hkH.mp4')
+settings.add('banner', f'{prefix.get()}info banner', f'changes {prefix.get()}info banner', 'https://envs.sh/hkm.mp4')

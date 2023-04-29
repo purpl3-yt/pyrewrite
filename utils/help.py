@@ -1,17 +1,12 @@
 from utils.prefix import prefix
-'''
-class Prefix:
-    def __init__(self) -> None:pass
-    def get(self):return '.'
-'''
-
 
 class Command:
-    def __init__(self, name, description_short, description_long, usage) -> None:
+    def __init__(self, name, description_short, description_long, usage, author) -> None:
         self.name = name
         self.description_short = description_short
         self.description_long = description_long
         self.usage = usage
+        self.author = author
 
     def get_name(self):
         return self.name
@@ -25,6 +20,9 @@ class Command:
     def get_usage(self):
         return self.usage
 
+    def get_author(self):
+        return self.author
+
     def __str__(self):
         return self.name
     
@@ -34,11 +32,11 @@ class Help_Menu:
     def __init__(self) -> None:
         pass
 
-    def add_command(self, name, description_short = 'simple command', description_long = None, usage = 'Not set'):
+    def add_command(self, name, description_short = 'simple command', description_long = None, usage = 'Not set', author = 'Not set'):
         if description_long == None:
             description_long = description_short
 
-        self.commands[name] = [name, Command(name, description_short, description_long, usage)]
+        self.commands[name] = [name, Command(name, description_short, description_long, usage, author)]
 
     def get(self):
         help_text = '<b>PyRewrite modules</b>\n'
@@ -61,5 +59,3 @@ class Help_Menu:
         return None
 
 help_menu = Help_Menu()
-
-help_menu.add_command('del', '123')

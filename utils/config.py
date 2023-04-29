@@ -17,6 +17,5 @@ def set_setting(key, value, section = 'main'):
     
     write_config()
     
-
 def get_setting(key, section = 'main'):
     return config.get(section, key)
