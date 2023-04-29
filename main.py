@@ -14,7 +14,7 @@ requirements = [
     '--upgrade'
 ]
 
-#pip.main(requirements)
+pip.main(requirements)
 
 logging.basicConfig(level=logging.INFO, format='%(message)s')
 
