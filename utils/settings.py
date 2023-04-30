@@ -55,6 +55,9 @@ class Settings:
 
         return settings_text
     
+    def get_raw(self):
+        return [set for set in self.settings_dict.values()]
+
     def get_lenght(self):
         return len(self.settings_dict.items())
 

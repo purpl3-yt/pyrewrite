@@ -6,7 +6,7 @@ from plugins.helpers import warn
 
 @Client.on_message(filters.command('quit', prefixes=prefix.get()) & filters.me)
 async def quit_cmd(client: Client, message: Message):
-    await message.edit('👋 <b>Bye-bye!</b>')
+    await message.edit('👋 <b>Userbot stopped, Bye-bye!</b>')
     quit()
 
 help_menu.add_command('quit', 'Quit from userbot')

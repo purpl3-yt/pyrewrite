@@ -1,5 +1,6 @@
 from pyrogram.types import Message
 import random
+import os, sys
 
 def get_args(msg: Message):
     return str(msg.text).split(' ')[1:]
@@ -53,3 +54,12 @@ def text_animation(text):
         str = ''.join(shif)
         x += 1
     return steps
+
+def get_system():
+    system = 'Linux 🐧' if os.name == 'posix' else 'Windows 💻'
+    if os.name == 'posix':
+        if 'termux' in sys.executable.lower():
+            system = 'Termux 📱'
+        else:
+            import distro
+            system = distro.name(pretty=False)
