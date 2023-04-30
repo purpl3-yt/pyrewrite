@@ -29,12 +29,13 @@ if not os.path.isfile('config.ini'): # if config doesn't exist
 
     with open('config.ini', 'w') as cfg:config.write(cfg)
 
-    print('Created config, please enter your api_id and api_hash!')
-    quit()
+    print('Created config!')
+if get_setting('api_id') == 'ENTER_YOUR_API_ID' or get_setting('api_hash') == 'ENTER_YOUR_API_HASH' or get_setting('api_id') == '' or get_setting('api_hash') == '':
+    new_api_id = input('Please enter your api_id: ')
+    set_setting('api_id', new_api_id)
 
-if get_setting('api_id') == 'ENTER_YOUR_API_ID' or get_setting('api_hash') == 'ENTER_YOUR_API_HASH':
-    print('Please enter your api_id and api_hash!')
-    quit()
+    new_api_hash = input('Please enter your api_hash: ')
+    set_setting('api_hash', new_api_hash)
 
 if not os.path.isdir('plugins/custom/'):
     os.mkdir('plugins/custom/')
