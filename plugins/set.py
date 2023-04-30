@@ -33,7 +33,7 @@ async def sets(client: Client, message: Message):
     
     try:args[0]
     except:
-        await message.edit(settings.get())
+        await message.edit(settings.get(), disable_web_page_preview=True)
     else:
         cmd_found = settings.get_by_name(args[0])
         
@@ -51,4 +51,4 @@ async def sets(client: Client, message: Message):
         else:
             await message.edit(f'<code>{cmd_found}</code> - <b>{cmd_found.get_long_description()}</b>\n<b>Current value:</b> <code>{cmd_found.get_value()}</code>\n<b>Default value: </b><code>{cmd_found.get_default_value()}</code>')
 
-help_menu.add_command('sets', 'Get settings', 'Get list of settings', f'<code>{prefix.get()}sets</code> <code><u>(setting)</u></code> <code>reset</code> <b></i>- to reset setting to default value</i></b>')
+help_menu.add_command('sets', 'Get settings', 'Get list of settings', f'<code>{prefix.get()}sets</code> <code><u>(setting)</u></code> <code>reset</code> <b></i>- for reset setting to default value</i></b>')

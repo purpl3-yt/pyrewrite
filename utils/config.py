@@ -17,5 +17,9 @@ def set_setting(key, value, section = 'main'):
     
     write_config()
     
-def get_setting(key, section = 'main'):
-    return config.get(section, key)
+def get_setting(key, section = 'main', if_option_not_exist = None):
+    try:
+        return config.get(section, key)
+    except configparser.NoOptionError:
+        set_setting(key, if_option_not_exist, section)
+        return config.get(section, key)
