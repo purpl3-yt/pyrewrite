@@ -17,11 +17,17 @@ async def info(client: Client, message: Message):
             import distro
             system = distro.name(pretty=False)
 
-    await client.send_animation(chat_id, get_setting('banner', 'settings'), f'''
+    text = f'''
 <b><a href="https://github.com/purpl3-yt/pyrewrite">PyRewrite</a> - Simple & Convenient</b>
 <b>🖌 Prefix:</b> <b>"</b><code>{prefix.get()}</code><b>"</b>
 <b>🖥 OS: {system}</b>
 <b>🔧 Commands: {str(help_menu.get_lenght())}</b>
-''')
+    '''
+
+    if message.reply_to_message != None:
+        await client.send_animation(chat_id, get_setting('banner', 'settings'), text, reply_to_message_id=message.reply_to_message.id)
+    elif message.reply_to_message == None:
+        await client.send_animation(chat_id, get_setting('banner', 'settings'), text)
+    
 
 help_menu.add_command('info', 'Get info', 'Get info about userbot', author='Purpl3')
