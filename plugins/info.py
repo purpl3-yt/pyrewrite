@@ -18,7 +18,7 @@ async def info(client: Client, message: Message):
             system = distro.name(pretty=False)
 
     await client.send_animation(chat_id, get_setting('banner', 'settings'), f'''
-<b>PyRewrite - Simple & Convenient</b>
+<b><a href="https://github.com/purpl3-yt/pyrewrite">PyRewrite</a> - Simple & Convenient</b>
 <b>🖌 Prefix:</b> <b>"</b><code>{prefix.get()}</code><b>"</b>
 <b>🖥 OS: {system}</b>
 <b>🔧 Commands: {str(help_menu.get_lenght())}</b>

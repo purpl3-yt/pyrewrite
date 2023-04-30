@@ -11,7 +11,6 @@ requirements = [
     'install',
     'pyrogram==2.0.104',
     'distro',
-    'wget',
     '--upgrade'
 ]
 
@@ -36,6 +35,9 @@ if not os.path.isfile('config.ini'): # if config doesn't exist
 if get_setting('api_id') == 'ENTER_YOUR_API_ID' or get_setting('api_hash') == 'ENTER_YOUR_API_HASH':
     print('Please enter your api_id and api_hash!')
     quit()
+
+if not os.path.isdir('plugins/custom/'):
+    os.mkdir('plugins/custom/')
 
 from pyrogram import Client
 

@@ -26,6 +26,9 @@ class Setting:
     def get_default_value(self):
         return self.default_value
     
+    def set_default_value(self):
+        return set_setting(self.name, self.default_value, 'settings')
+    
 class Settings:
     settings_dict = {}
     def __init__(self) -> None:
@@ -69,4 +72,4 @@ class Settings:
 settings = Settings()
 # Add settings
 settings.add('prefix', 'userbot prefix', 'Changes the userbot prefix')
-settings.add('banner', f'{prefix.get()}info banner', f'changes {prefix.get()}info banner', 'https://envs.sh/hkm.mp4')
+settings.add('banner', f'{prefix.get()}info banner', f'changes {prefix.get()}info banner', 'https://envs.sh/hkf.mp4')

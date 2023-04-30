@@ -30,12 +30,20 @@ help_menu.add_command('set', 'Set Setting')
 @Client.on_message(filters.command('sets', prefixes=prefix.get()) & filters.me)
 async def sets(client: Client, message: Message):
     args = get_args(message)
-
+    
     try:args[0]
     except:
         await message.edit(settings.get())
     else:
         cmd_found = settings.get_by_name(args[0])
+        
+        try:args[1]
+        except:pass
+        else:
+            if args[1] == 'reset':
+                cmd_found.set_default_value()
+                await warn(message, 'Setting set to default value', 'done')
+                return
 
         if cmd_found == None:
             await warn(message, 'Setting not found!')
@@ -43,4 +51,4 @@ async def sets(client: Client, message: Message):
         else:
             await message.edit(f'<code>{cmd_found}</code> - <b>{cmd_found.get_long_description()}</b>\n<b>Current value:</b> <code>{cmd_found.get_value()}</code>\n<b>Default value: </b><code>{cmd_found.get_default_value()}</code>')
 
-help_menu.add_command('sets', 'Get settings', 'Get list of settings')
+help_menu.add_command('sets', 'Get settings', 'Get list of settings', f'<code>{prefix.get()}sets</code> <code><u>(setting)</u></code> <code>reset</code> <b></i>- to reset setting to default value</i></b>')

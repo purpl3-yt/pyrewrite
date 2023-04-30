@@ -11,8 +11,11 @@ async def dlmod(client: Client, message: Message):
     if message.reply_to_message != None:
         if message.reply_to_message.document != None:
             await warn(message, 'Downloading...', 'time')
-            await client.download_media(message.reply_to_message, './plugins/'+os.path.basename(message.reply_to_message.document.file_name))
+
+            await client.download_media(message.reply_to_message, './plugins/custom/'+os.path.basename(message.reply_to_message.document.file_name))
+            
             await warn(message, 'Done!', 'done')
+            
             await restart(client, message)
         else:
             await warn(message, 'The message must be a file!')
