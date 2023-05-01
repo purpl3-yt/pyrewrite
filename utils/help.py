@@ -1,13 +1,12 @@
 from utils.prefix import prefix
 
 class Command:
-    def __init__(self, name, description_short, description_long, usage, author, custom) -> None:
+    def __init__(self, name, description_short, description_long, usage, author) -> None:
         self.name = name
         self.description_short = description_short
         self.description_long = description_long
         self.usage = usage
         self.author = author
-        self.custom = custom
 
     def get_name(self):
         return self.name
@@ -23,9 +22,6 @@ class Command:
 
     def get_author(self):
         return self.author
-    
-    def get_custom(self):
-        return self.custom
 
     def __str__(self):
         return self.name
@@ -36,28 +32,24 @@ class Help_Menu:
     def __init__(self) -> None:
         pass
 
-    def add_command(self, name, description_short = 'simple command', description_long = None, usage = 'Not set', author = 'Not set', custom = False):
+    def add_command(self, name, description_short = 'simple command', description_long = None, usage = 'Not set', author = 'Not set'):
         if description_long == None:
             description_long = description_short
 
-        self.commands[name] = [name, Command(name, description_short, description_long, usage, author, custom)]
+        self.commands[name] = [name, Command(name, description_short, description_long, usage, author)]
 
     def get(self):
         help_text = '<b>PyRewrite modules</b>\n'
-        
-        help_text_custom = 'Custom modules\n'
 
         for command in self.commands.values():
             command_name = command[0]
             command_description_short = command[1].get_short_description()
-            if not command[1].get_custom():
-                
-                help_text += f'<code>{prefix.get()}{command_name}</code><b> - {str(command_description_short).capitalize()}</b>\n'
-            elif command[1].get_custom():
-                help_text_custom += f'<code>{prefix.get()}{command_name}</code><b> - {str(command_description_short).capitalize()}</b>\n'
+
+            help_text += f'<code>{prefix.get()}{command_name}</code><b> - {str(command_description_short).capitalize()}</b>\n'
             
-        return help_text + help_text_custom
-    
+ 
+        return help_text
+        
     def get_lenght(self):
         return len(self.commands.items())
     
