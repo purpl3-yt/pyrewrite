@@ -6,3 +6,6 @@
 <h1 align='center'>PyRewrite</h1>
 
 <h1 align='center' style=>The better copy of <a href='https://github.com/purpl3-yt/pyuserbot'>PyUserBot</a></h1>
+
+<h1 align='center'>Installation</h1>
+<h2>Unix like systems <code>git clone https://github.com/purpl3-yt/pyrewrite.git && cd pyrewrite && python main.py</code></h2>
