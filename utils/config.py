@@ -4,6 +4,12 @@ import configparser
 config = ConfigParser()
 config.read('config.ini')
 
+def read_config():
+    global config
+    config = ConfigParser()
+    config.read('config.ini')
+
+
 def write_config():
     with open('config.ini', 'w') as cfg:config.write(cfg)
 

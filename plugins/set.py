@@ -15,8 +15,18 @@ async def set(client: Client, message: Message):
     except:await warn(message, 'Enter setting!');return
 
     try:args[1] # set value
-    except:await warn(message, 'Enter setting value!');return
-    
+    except:
+        if message.reply_to_message == None:
+            await warn(message, 'Enter setting value!');return
+        elif message.reply_to_message != None:
+            if message.reply_to_message.text != None:
+                set_setting(args[0], message.reply_to_message.text, 'settings')
+                await warn(message, f'<b>Set setting:</b> <code>{args[0]}</code> <b>to</b> <code>{message.reply_to_message.text}</code>', 'done', True)
+            elif message.reply_to_message.caption != None:
+                set_setting(args[0], message.reply_to_message.caption, 'settings')
+                await warn(message, f'<b>Set setting:</b> <code>{args[0]}</code> <b>to</b> <code>{message.reply_to_message.caption}</code>', 'done', True)
+
+            return
     if args[0] == 'prefix':
         set_setting(args[0], args[1], 'main')
         await restart(client, message)

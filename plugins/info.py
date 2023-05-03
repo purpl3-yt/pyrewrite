@@ -9,7 +9,9 @@ import os, sys
 async def info(client: Client, message: Message):
     chat_id = message.chat.id
     await message.delete()
+
     system = 'Linux 🐧' if os.name == 'posix' else 'Windows 💻'
+    
     if os.name == 'posix':
         if 'termux' in sys.executable.lower():
             system = 'Termux 📱'
@@ -22,6 +24,7 @@ async def info(client: Client, message: Message):
 <b>🖌 Prefix:</b> <b>"</b><code>{prefix.get()}</code><b>"</b>
 <b>🖥 OS: {system}</b>
 <b>🔧 Commands: {str(help_menu.get_lenght())}</b>
+<b>🛠 Modules channel: @pyrewrite</b>
     '''
 
     if message.reply_to_message != None:
