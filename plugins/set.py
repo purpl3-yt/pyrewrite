@@ -52,7 +52,7 @@ async def sets(client: Client, message: Message):
         else:
             if args[1] == 'reset':
                 cmd_found.set_default_value()
-                await warn(message, 'Setting set to default value', 'done')
+                await warn(message, f'Setting {cmd_found.get_name()} to default value', 'done')
                 return
 
         if cmd_found == None:
