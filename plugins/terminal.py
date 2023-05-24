@@ -15,7 +15,7 @@ async def exm(client: Client, message: Message):
     output = os.popen(' '.join(args)).read()
     
     try:
-        await warn(message, f'<b>Done:</b>\n<b>Command:</b> <code>{" ".join(args)}</code> <code>\n' + output + '</code>', 'done', True)
+        await warn(message, f'<b>Done:</b>\n<b>Command:\n</b><code>{" ".join(args)}</code> <code>\n' + output + '</code>', 'done', raw=True)
 
     except pyrogram.errors.exceptions.bad_request_400.MessageTooLong:
         await warn(message, 'Error: Message to long!\nSending as file...')

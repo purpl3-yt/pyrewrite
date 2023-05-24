@@ -17,4 +17,4 @@ async def info(client: Client, message: Message):
             await warn(message, 'Command not found!')
 
         else:
-            await message.edit(f'<code>{prefix.get()}{cmd_found}</code> - <b>{cmd_found.get_long_description()}\nUsage: </b>\n{cmd_found.get_usage()}\n<b>Author: {cmd_found.get_author()}</b>')
+            await message.edit(f'<code>{prefix.get()}{cmd_found}</code> - <b>{cmd_found.get_long_description()}\nUsage: </b>\n{cmd_found.get_usage()}')

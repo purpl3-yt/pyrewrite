@@ -21,9 +21,11 @@ async def set(client: Client, message: Message):
         elif message.reply_to_message != None:
             if message.reply_to_message.text != None:
                 set_setting(args[0], message.reply_to_message.text, 'settings')
+                
                 await warn(message, f'<b>Set setting:</b> <code>{args[0]}</code> <b>to</b> <code>{message.reply_to_message.text}</code>', 'done', True)
             elif message.reply_to_message.caption != None:
                 set_setting(args[0], message.reply_to_message.caption, 'settings')
+                
                 await warn(message, f'<b>Set setting:</b> <code>{args[0]}</code> <b>to</b> <code>{message.reply_to_message.caption}</code>', 'done', True)
 
             return

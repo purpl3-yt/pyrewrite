@@ -4,7 +4,7 @@ from utils.prefix import prefix
 from utils.help import help_menu
 from plugins.helpers import warn, get_args
 import requests
-import os, sys
+import os
 
 @Client.on_message(filters.command('upload', prefixes=prefix.get()) & filters.me)
 async def upload_command(client: Client, message: Message):
@@ -25,7 +25,7 @@ async def upload_command(client: Client, message: Message):
 
         await warn(message, f'<b>Done!\nLink: </b><code>{envs.text}</code>', 'done', raw=True)
         
-        if send == True:
+        if send:
             await client.send_message(message.chat.id, envs.text)
 
         os.remove('./' + os.path.basename(downloaded_media))
