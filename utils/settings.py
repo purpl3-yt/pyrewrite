@@ -35,6 +35,7 @@ class Settings:
         pass
 
     def add(self, name, description_short, description_long = None, default_value = '.'):
+        """Add setting"""
         try:get_setting(name, 'settings')
         except Exception as e:
             if name != 'prefix':
@@ -46,6 +47,7 @@ class Settings:
         self.settings_dict[name] = Setting(name, description_short, description_long, default_value)
 
     def get(self):
+        "Get settings menu text"
         settings_text = '<b>PyRewrite Settings</b>\n'
         for set in self.settings_dict.values():
             setting_name = set.get_name()
@@ -56,12 +58,15 @@ class Settings:
         return settings_text
     
     def get_raw(self):
+        "Get all settings in dict"
         return [set for set in self.settings_dict.values()]
 
     def get_lenght(self):
+        """Get settings lenght"""
         return len(self.settings_dict.items())
 
     def get_by_name(self, query):
+        """Get setting class by name"""
         for set in self.settings_dict.values():
             if set.get_name() == query:
                 return set
@@ -69,6 +74,7 @@ class Settings:
         return None
     
     def get_value(self, set_name, new_value):
+        "Get value of the setting"
         set = self.get_by_name(set_name)
         return set.get_value()
     
@@ -76,3 +82,4 @@ settings = Settings()
 # Add settings
 settings.add('prefix', 'userbot prefix', 'Changes the userbot prefix')
 settings.add('banner', f'{prefix.get()}info banner', f'changes {prefix.get()}info banner', 'https://envs.sh/hkf.mp4')
+settings.add('info', f'changes {prefix.get()}info text (can be full/lite)', f'Changes text of the {prefix.get()}info menu, can be full or lite', default_value='full')

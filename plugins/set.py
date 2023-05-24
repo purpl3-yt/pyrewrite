@@ -21,9 +21,11 @@ async def set(client: Client, message: Message):
         elif message.reply_to_message != None:
             if message.reply_to_message.text != None:
                 set_setting(args[0], message.reply_to_message.text, 'settings')
+                
                 await warn(message, f'<b>Set setting:</b> <code>{args[0]}</code> <b>to</b> <code>{message.reply_to_message.text}</code>', 'done', True)
             elif message.reply_to_message.caption != None:
                 set_setting(args[0], message.reply_to_message.caption, 'settings')
+                
                 await warn(message, f'<b>Set setting:</b> <code>{args[0]}</code> <b>to</b> <code>{message.reply_to_message.caption}</code>', 'done', True)
 
             return
@@ -52,7 +54,7 @@ async def sets(client: Client, message: Message):
         else:
             if args[1] == 'reset':
                 cmd_found.set_default_value()
-                await warn(message, 'Setting set to default value', 'done')
+                await warn(message, f'Setting {cmd_found.get_name()} to default value', 'done')
                 return
 
         if cmd_found == None:

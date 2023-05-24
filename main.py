@@ -15,7 +15,6 @@ requirements = [
     '--upgrade'
 ]
 
-pip.main(requirements)
 
 logging.basicConfig(level=logging.INFO, format='%(message)s')
 
@@ -34,6 +33,9 @@ if not os.path.isfile('config.ini'): # if config doesn't exist
 
 read_config()
 
+if get_setting('debug', if_option_not_exist='false') == 'false':
+    pip.main(requirements)
+
 if get_setting('api_id') == 'ENTER_YOUR_API_ID' or get_setting('api_hash') == 'ENTER_YOUR_API_HASH' or get_setting('api_id') == '' or get_setting('api_hash') == '':
     new_api_id = input('Please enter your api_id: ')
     set_setting('api_id', new_api_id)
@@ -49,7 +51,7 @@ client = Client(
     api_id=get_setting('api_id'),
     api_hash=get_setting('api_hash'),
     device_model='PyRewrite',
-    plugins=dict(root='plugins'),
+    plugins = dict(root='plugins'),
 )
 
 try:sys.argv[1]
@@ -71,6 +73,5 @@ logo = '''
                                                           '''
 
 print(logo)
-
 
 client.run()
