@@ -9,8 +9,3 @@
 
 <h1 align='center'>Installation</h1>
 <h2>Unix like systems <code>git clone https://github.com/purpl3-yt/pyrewrite.git && cd pyrewrite && python main.py</code></h2>
-
-<h1>Mods: </h1>
-<ol>
-<h2><li><a href='https://github.com/SunTimeDev/PyRewrite-Plus'>PyRewrite Plus<a> By <a href='https://github.com/SunTimeDev'>SunTimeDev</a></li></h2>
-</ol>
