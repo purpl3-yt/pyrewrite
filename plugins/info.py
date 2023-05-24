@@ -43,9 +43,7 @@ def get_info_menu(info_type = 'full'):
 async def info(client: Client, message: Message):
     chat_id = message.chat.id
     await message.delete()
-
-    print(get_info_menu(get_setting('info', 'settings',if_option_not_exist='full')))
-
+    
     if message.reply_to_message != None:
         await client.send_animation(chat_id, get_setting('banner', 'settings'), get_info_menu(get_setting('info', 'settings',if_option_not_exist='full')), reply_to_message_id=message.reply_to_message.id)
     elif message.reply_to_message == None:
