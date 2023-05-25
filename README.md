@@ -7,9 +7,4 @@
 
 <h1 align='center' style=>The better copy of <a href='https://github.com/purpl3-yt/pyuserbot'>PyUserBot</a></h1>
 
-<h1 align='center'>Installation</h1>
-<h3>Unix like systems <code>git clone https://github.com/purpl3-yt/pyrewrite.git && cd pyrewrite && python main.py</code></h3>
-<details>
-  <summary><h3>Dev Version</h3></summary>
-  <h3><code>git clone -b dev https://github.com/purpl3-yt/pyrewrite.git</code></h3>
-</details>
+<h1 align='center'><a href="https://github.com/purpl3-yt/pyrewrite/wiki/Installation">Installation</a></h1>
