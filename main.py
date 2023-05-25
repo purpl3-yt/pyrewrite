@@ -1,5 +1,4 @@
 from configparser import ConfigParser
-from pyrogram import Client
 from utils.config import *
 import os, sys
 import logging
@@ -14,7 +13,6 @@ requirements = [
     'distro',
     '--upgrade'
 ]
-
 
 logging.basicConfig(level=logging.INFO, format='%(message)s')
 
@@ -35,6 +33,8 @@ read_config()
 
 if get_setting('debug', if_option_not_exist='false') == 'false':
     pip.main(requirements)
+
+from pyrogram import Client
 
 if get_setting('api_id') == 'ENTER_YOUR_API_ID' or get_setting('api_hash') == 'ENTER_YOUR_API_HASH' or get_setting('api_id') == '' or get_setting('api_hash') == '':
     new_api_id = input('Please enter your api_id: ')
