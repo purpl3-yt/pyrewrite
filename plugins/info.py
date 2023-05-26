@@ -36,18 +36,29 @@ def get_info_menu(info_type = 'full'):
 <b>🔧 Commands: {str(help_menu.get_lenght())}</b>
 <b>🛠 Modules channel: @pyrewrite</b>'''
     
+    elif info_type == 'smaller':
+        return f'''
+<b><a href="https://github.com/purpl3-yt/pyrewrite">PyRewrite</a></b>
+<b>Prefix:</b> <b>"</b><code>{prefix.get()}</code><b>"</b>
+'''
+
     else: 
-        return default
+        return default + '\n\n⛔️ <b>You must set info type (full/lite)!</b>'
 
 @Client.on_message(filters.command('info', prefixes=prefix.get()) & filters.me)
 async def info(client: Client, message: Message):
     chat_id = message.chat.id
     await message.delete()
     
-    if message.reply_to_message != None:
-        await client.send_animation(chat_id, get_setting('banner', 'settings'), get_info_menu(get_setting('info', 'settings',if_option_not_exist='full')), reply_to_message_id=message.reply_to_message.id)
-    elif message.reply_to_message == None:
-        await client.send_animation(chat_id, get_setting('banner', 'settings'), get_info_menu(get_setting('info', 'settings',if_option_not_exist='full')))
+    info_type = get_setting('info', 'settings', if_option_not_exist='full')
+
+    if info_type != 'smaller':
+        if message.reply_to_message != None:
+            await client.send_animation(chat_id, get_setting('banner', 'settings'), get_info_menu(info_type), reply_to_message_id=message.reply_to_message.id)
+        elif message.reply_to_message == None:
+            await client.send_animation(chat_id, get_setting('banner', 'settings'), get_info_menu(info_type))
     
+    elif info_type == 'smaller':
+        await client.send_message(chat_id, get_info_menu(info_type), disable_web_page_preview=True)
 
 help_menu.add_command('info', 'Get info', 'Get info about userbot')
