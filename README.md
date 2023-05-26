@@ -7,4 +7,4 @@
 
 <h1 align='center' style=>The better copy of <a href='https://github.com/purpl3-yt/pyuserbot'>PyUserBot</a></h1>
 
-<h1 align='center'><a href="https://github.com/purpl3-yt/pyrewrite/wiki/Installation">Installation</a></h1>
+<h1 align='center'><a href="https://github.com/purpl3-yt/pyrewrite/wiki">Wiki</a></h1>
